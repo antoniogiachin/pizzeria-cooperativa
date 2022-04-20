@@ -1,5 +1,5 @@
 <template>
-  <h1>Manu: le nostre specialità!</h1>
+  <h1>Menu: le nostre specialità!</h1>
 </template>
 
 <script>

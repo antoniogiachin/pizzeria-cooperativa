@@ -2667,7 +2667,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Manu: le nostre specialità!")])
+  return _c("h1", [_vm._v("Menu: le nostre specialità!")])
 }
 var staticRenderFns = []
 render._withStripped = true
