@@ -7,12 +7,12 @@
                         <li class="nav-item">
                             <router-link class="nav-link" aria-current="page" :to="{name: 'home'}">Home</router-link>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <router-link class="nav-link" :to="{name: 'menu'}">Menu</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link" :to="{name: 'order'}">Ordina la tua pizza!</router-link>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>
