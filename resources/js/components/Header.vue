@@ -1,11 +1,11 @@
 <template>
-    <div class="container">
+    <div class="container border-2 rounded bg-primary">
         <div class="row">
             <div class="col-10 offset-1">
                 <nav class="py-2">
                     <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <router-link class="nav-link" aria-current="page" :to="{name: 'home'}">Home</router-link>
+                        <li v-for="(link, index) in navLinks" :key="index" class="nav-item">
+                            <router-link class="  text-white nav-link" aria-current="page" :to="{name: link.to}">{{ link.name }}</router-link>
                         </li>
                         <!-- <li class="nav-item">
                             <router-link class="nav-link" :to="{name: 'menu'}">Menu</router-link>
@@ -23,9 +23,29 @@
 <script>
 export default {
     name: 'Header',
+    data() {
+        return {
+            navLinks: [
+                {
+                    to : 'home',
+                    name : 'Home',
+                },
+                {
+                    to : 'menu',
+                    name : 'Menu',
+                },
+                {
+                    to : 'order',
+                    name : 'Ordina subito!',
+                },
+            ]
+        }
+    },
 }
 </script>
 
 <style>
-
+.router-link-exact-active{
+    text-transform: uppercase;
+}
 </style>
