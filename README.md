@@ -20,6 +20,7 @@ DatabaseSeeder.php oppure php artisan db:seed --class=NomeDelSeeder)
 ### 1
 - [x] PizzaController + CRUD
 - [x] Views -> admin -> pizzas
+- [X] Seeds per pizze menu
 - [ ] Api per passaggio informazioni menu al Front
 
 ### 2
