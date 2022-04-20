@@ -18,24 +18,25 @@ DatabaseSeeder.php oppure php artisan db:seed --class=NomeDelSeeder)
 
 ## Back-End
 ### 1
-- Creazione del menu: popolare tabella pizzas con Seeder Pizze -> CRUD per Gestione inserimento, modifica, eliminazione pizze
-- Api per passaggio informazioni menu al Front
+- [x] PizzaController + CRUD
+- [x] Views -> admin -> pizzas
+- [ ] Api per passaggio informazioni menu al Front
 
 ### 2
-- creazione tabella/model ordini ricevuti
-- Api get per visualizzazione ordini & Api post per ricevere dal front ordine
+- [ ] creazione tabella/model ordini ricevuti
+- [ ] Api get per visualizzazione ordini & Api post per ricevere dal front ordine
 
 ### 3
-- aggiunta a tabella ordini di colonna "consegna stimata" (calcola con carbon da created_at a mezz'ora dopo ad esempio)
-- setup invio email al ristorante(admin) alla ricezione di un ordine
+- [ ] aggiunta a tabella ordini di colonna "consegna stimata" (calcola con carbon da created_at a mezz'ora dopo ad esempio)
+- [x] setup invio email al ristorante(admin) alla ricezione di un ordine
 
 ## Front - End
 
 ### 1
-- Setup vue router e paginazione (homepage ,menu, chi siamo, invia ordine)
-- Ricezione menu tramite axios/api, stilizzazione pagina homepage & menu $ chi-siamo
+- [x] Setup vue router e paginazione (homepage ,menu, chi siamo, invia ordine)
+- [ ] Ricezione menu tramite axios/api, stilizzazione pagina homepage & menu $ chi-siamo
 
 ### 2
-- gestione invio ordine -> form invio ordine(api post) e visualizzazione ordine inviato (api get)
+- [ ] gestione invio ordine -> form invio ordine(api post) e visualizzazione ordine inviato (api get)
 
 BVFJKBVJKDFNVJKDCNBVJKDFNBFJKSNFD
