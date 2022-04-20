@@ -46,33 +46,33 @@ class PizzaController extends Controller
                 [
                     'name' => 'required|min:1',
                     'price' => 'required|min:1',
-    
+
                 ]
             );
-    
+
             $data = $request->all();
-    
+
             $slug = Str::slug($data['name']);
-    
+
             $counter = 1;
-    
+
             while(Pizza::where('slug', $slug)->first()){
                 $slug = Str::slug($data['name']) . '-' . $counter;
                 $counter++;
-                
+
             }
-    
+
             $data['slug'] = $slug;
-    
+
             $pizza = new Pizza();
-    
+
             $pizza->fill($data);
-    
+
             $pizza->save();
-    
+
             return redirect()->route('admin.pizzas.index', ['pizza' => $pizza->id])->with('status', 'pizza added successfully');
-    
-    
+
+
         }
     }
 
@@ -121,27 +121,27 @@ class PizzaController extends Controller
         );
 
         $data = $request->all();
-    
+
             $slug = Str::slug($data['name']);
-    
+
             $counter = 1;
-    
+
             while(Pizza::where('slug', $slug)->first()){
                 $slug = Str::slug($data['name']) . '-' . $counter;
                 $counter++;
-                
+
             }
-    
+
             $data['slug'] = $slug;
-    
+
             $pizza->fill($data);
-    
+
             $pizza->save();
-    
+
             return redirect()->route('admin.pizzas.index', ['pizza' => $pizza->id])->with('status', 'pizza added successfully');
-    
-    
-        }
+
+
+
     }
 
     /**
@@ -150,10 +150,11 @@ class PizzaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pizza $pizza)
-    {
+    public function destroy(Pizza $pizza) {
+
         $pizza->delete();
 
         return redirect()->route('admin.pizzas.index');
     }
+
 }

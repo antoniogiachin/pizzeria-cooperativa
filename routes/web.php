@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PizzaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+// rotte Admin
+Route::middleware('auth')
+->namespace('admin')
+->name('admin.')
+->prefix('admin')
+->group(
+    function(){
+        Route::resource('pizzas', 'PizzaController');
+    }
+);
 // rotta catch all
 Route::get(
     "{any?}",
@@ -28,7 +33,3 @@ Route::get(
         return view('guests.home');
     }
 )->where('any', '.*');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
