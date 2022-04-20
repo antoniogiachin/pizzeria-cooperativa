@@ -31,8 +31,13 @@ DatabaseSeeder.php oppure php artisan db:seed --class=NomeDelSeeder)
 - [ ] aggiunta a tabella ordini di colonna "consegna stimata" (calcola con carbon da created_at a mezz'ora dopo ad esempio)
 - [x] setup invio email al ristorante(admin) alla ricezione di un ordine
 
-## Front - End
+### 4
+- [ ] stilizzazione back-end tabella pizze
+- [ ] stilizzazione back-end tabella ordini effettuati/in corso
+- [ ] stilizzazione navbar pizze e ordini
 
+
+## Front - End
 ### 1
 - [x] Setup vue router e paginazione (homepage ,menu, chi siamo, invia ordine)
 - [ ] Ricezione menu tramite axios/api,
@@ -45,6 +50,3 @@ DatabaseSeeder.php oppure php artisan db:seed --class=NomeDelSeeder)
 - [x] gestione invio ordine -> form invio ordine(api post)
 - [x] orderController e model Order
 - [ ] visualizzazione ordine inviato (api get)
-
-BVFJKBVJKDFNVJKDCNBVJKDFNBFJKSNFD
-dasfdfasdasdasd
