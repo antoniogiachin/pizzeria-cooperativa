@@ -38,7 +38,8 @@ DatabaseSeeder.php oppure php artisan db:seed --class=NomeDelSeeder)
 - [ ] Ricezione menu tramite axios/api, stilizzazione pagina homepage & menu $ chi-siamo
 
 ### 2
-- [ ] gestione invio ordine -> form invio ordine(api post) e visualizzazione ordine inviato (api get)
+- [x] gestione invio ordine -> form invio ordine(api post)
+- [ ] visualizzazione ordine inviato (api get)
 
 BVFJKBVJKDFNVJKDCNBVJKDFNBFJKSNFD
 dasfdfasdasdasd

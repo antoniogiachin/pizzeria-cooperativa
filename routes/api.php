@@ -23,3 +23,4 @@ Route::get('/menu',[ PizzaController::class, 'index']);
 Route::get('/menu/{slug}', [PizzaController::class, 'show']);
 
 Route::get("/pizze", "Api\PizzaController@index");
+Route::post("order", "Api\OrderController@store");
