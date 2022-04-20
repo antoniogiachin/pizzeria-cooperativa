@@ -2049,8 +2049,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Menu'
+  name: 'Menu',
+  data: function data() {
+    return {
+      menu: []
+    };
+  },
+  methods: {
+    getMenu: function getMenu() {
+      var _this = this;
+
+      axios.get('/api/menu').then(function (response) {
+        _this.menu = response.data.results;
+        console.log(_this.menu);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getMenu();
+  }
 });
 
 /***/ }),
@@ -3546,7 +3577,39 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Menu: le nostre specialità!")])
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      { staticClass: "row justify-content-center" },
+      _vm._l(_vm.menu, function (pizza, index) {
+        return _c("div", { key: index, staticClass: "col-3 m-2" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("img", {
+              staticClass: "card-img-top",
+              attrs: { src: "https://picsum.photos/200/300", alt: pizza.name },
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v(_vm._s(pizza.name)),
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v("Prezzo: " + _vm._s(pizza.price)),
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                { staticClass: "btn btn-primary", attrs: { href: "#" } },
+                [_vm._v("Go somewhere")]
+              ),
+            ]),
+          ]),
+        ])
+      }),
+      0
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -19854,6 +19917,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/Pizza.vue":
+/*!**************************************!*\
+  !*** ./resources/js/pages/Pizza.vue ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+component.options.__file = "resources/js/pages/Pizza.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/router.js":
 /*!********************************!*\
   !*** ./resources/js/router.js ***!
@@ -19869,10 +19964,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Home_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Home.vue */ "./resources/js/pages/Home.vue");
 /* harmony import */ var _pages_Menu_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Menu.vue */ "./resources/js/pages/Menu.vue");
 /* harmony import */ var _pages_Order_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Order.vue */ "./resources/js/pages/Order.vue");
-/* harmony import */ var _pages_NotFound_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/NotFound.vue */ "./resources/js/pages/NotFound.vue");
+/* harmony import */ var _pages_Pizza_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Pizza.vue */ "./resources/js/pages/Pizza.vue");
+/* harmony import */ var _pages_NotFound_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/NotFound.vue */ "./resources/js/pages/NotFound.vue");
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
 
 
 
@@ -19891,11 +19988,16 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/order',
     name: 'order',
     component: _pages_Order_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, //rotta singola pizza
+  {
+    path: '/menu/:slug',
+    name: 'pizza',
+    component: _pages_Pizza_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, //rotta catch all
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    component: _pages_NotFound_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _pages_NotFound_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);

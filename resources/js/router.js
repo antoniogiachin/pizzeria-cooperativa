@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 import Home from './pages/Home.vue';
 import Menu from './pages/Menu.vue';
 import Order from './pages/Order.vue';
+import Pizza from './pages/Pizza.vue';
 import NotFound from './pages/NotFound.vue';
 
 const router = new VueRouter(
@@ -26,6 +27,12 @@ const router = new VueRouter(
                 path: '/order',
                 name: 'order',
                 component: Order
+            },
+            //rotta singola pizza
+            {
+                path: '/menu/:slug',
+                name: 'pizza',
+                component : Pizza,
             },
             //rotta catch all
             {
