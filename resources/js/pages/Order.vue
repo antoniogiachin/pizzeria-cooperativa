@@ -45,9 +45,7 @@
                         <label for="pizzaSelected">Pizza</label>
                          <select class="custom-select" id="inputGroupSelect01" :class="{'is-invalid': errors.pizzaSelected}" name="selectedAddress" v-model="pizzaSelected">
                             <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option v-for="pizza in pizze" :key="pizza.id" :value="pizza.slug" >{{pizza.name}} ({{pizza.price}} &euro;)</option>
                         </select>
                         <div v-for="(error, index) in errors.pizzaSelected" :key="'error_pizzaSelected' + index" class="invalid-feedback">
                             {{error}}
@@ -83,6 +81,7 @@
                 address: null,
                 pizzaSelected: null,
                 message: null,
+                pizze: null,
                 errors: {},
                 sending: false,
                 success: false
@@ -90,9 +89,9 @@
         },
 
         mounted(){
-            axios.get("api/Pizzas")
+            axios.get("/api/pizze")
                 .then(response => {
-                    console.log(response.data);
+                    this.pizze = response.data.results;
                 });
         },
 

@@ -2156,8 +2156,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Order',
   data: function data() {
@@ -2167,19 +2165,22 @@ __webpack_require__.r(__webpack_exports__);
       address: null,
       pizzaSelected: null,
       message: null,
+      pizze: null,
       errors: {},
       sending: false,
       success: false
     };
   },
   mounted: function mounted() {
-    axios.get("api/Pizzas").then(function (response) {
-      console.log(response.data);
+    var _this = this;
+
+    axios.get("/api/pizze").then(function (response) {
+      _this.pizze = response.data.results;
     });
   },
   methods: {
     sendForm: function sendForm() {
-      var _this = this;
+      var _this2 = this;
 
       this.sending = true;
       axios.post("api/order", {
@@ -2190,18 +2191,18 @@ __webpack_require__.r(__webpack_exports__);
         "message": this.message
       }).then(function (response) {
         if (response.data.success) {
-          _this.success = true;
-          _this.name = null;
-          _this.number = null;
-          _this.address = null;
-          _this.pizzaSelected = null;
-          _this.message = null;
-          _this.errors = {};
+          _this2.success = true;
+          _this2.name = null;
+          _this2.number = null;
+          _this2.address = null;
+          _this2.pizzaSelected = null;
+          _this2.message = null;
+          _this2.errors = {};
         } else {
-          _this.errors = response.data.errors;
+          _this2.errors = response.data.errors;
         }
 
-        _this.sending = false;
+        _this2.sending = false;
       });
     }
   }
@@ -3829,12 +3830,22 @@ var render = function () {
                       _vm._v("Choose..."),
                     ]),
                     _vm._v(" "),
-                    _c("option", { attrs: { value: "1" } }, [_vm._v("One")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "2" } }, [_vm._v("Two")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "3" } }, [_vm._v("Three")]),
-                  ]
+                    _vm._l(_vm.pizze, function (pizza) {
+                      return _c(
+                        "option",
+                        { key: pizza.id, domProps: { value: pizza.slug } },
+                        [
+                          _vm._v(
+                            _vm._s(pizza.name) +
+                              " (" +
+                              _vm._s(pizza.price) +
+                              " €)"
+                          ),
+                        ]
+                      )
+                    }),
+                  ],
+                  2
                 ),
                 _vm._v(" "),
                 _vm._l(_vm.errors.pizzaSelected, function (error, index) {
