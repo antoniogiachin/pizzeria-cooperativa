@@ -1,7 +1,7 @@
 # Gestionale di pizze
 
 ## Passi da seguire per importare repo
-1. Cloniamo la repo esistente da GitHub 
+1. Cloniamo la repo esistente da GitHub
 2. Composer install
 3. Npm install
 4. Copia il file .env (cp .env.example .env da riga di comando)
@@ -21,7 +21,7 @@ DatabaseSeeder.php oppure php artisan db:seed --class=NomeDelSeeder)
 - [x] PizzaController + CRUD
 - [x] Views -> admin -> pizzas
 - [X] Seeds per pizze menu
-- [ ] Api per passaggio informazioni menu al Front
+- [X] Api per passaggio informazioni menu al Front
 
 ### 2
 - [ ] creazione tabella/model ordini ricevuti
