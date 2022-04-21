@@ -31,7 +31,7 @@ const router = new VueRouter(
             },
             //rotta singola pizza
             {
-                path: '/menu/:slug',
+                path: '/menu/:path?/:slug',
                 name: 'pizza',
                 component : Pizza,
             },
