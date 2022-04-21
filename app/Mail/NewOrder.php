@@ -7,21 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NewContact extends Mailable
+class NewOrder extends Mailable
 {
     use Queueable, SerializesModels;
 
-    // classe responsabile per invio email
-    public $lead;
+    public $order;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($_lead)
+    public function __construct($_order)
     {
-        $this -> lead = $_lead;
+        $this->order = $_order;
     }
 
     /**
@@ -31,8 +30,6 @@ class NewContact extends Mailable
      */
     public function build()
     {
-        // risposta email a chi mi contattata
-      
-        return $this->replyTo($this->lead->email)->view('emails.new-contact');
+        return $this->view('orders.newOrder');
     }
 }
