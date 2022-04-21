@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-3 m-2" v-for="(pizza,index) in menu" :key="index">
+            <div class="col-3 m-2" v-for="(pizza,index) in pizze" :key="index">
                 <div class="card">
                     <img src="https://picsum.photos/200/300" class="card-img-top" :alt="pizza.name">
                     <div class="card-body">
@@ -20,15 +20,15 @@ export default {
     name: 'Menu',
     data() {
         return {
-            menu: [],
+            pizze: [],
         }
     },
     methods: {
         getMenu() {
-            axios.get('/api/menu')
+            axios.get('api/pizze')
             .then(response =>{
-                this.menu = response.data.results;
-                console.log(this.menu);
+                this.pizze = response.data.results;
+                console.log(this.pizze);
             })
         }
     },

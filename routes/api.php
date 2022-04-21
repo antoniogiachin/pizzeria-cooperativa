@@ -19,8 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/menu',[ PizzaController::class, 'index']);
+//singola pizza
 Route::get('/menu/{slug}', [PizzaController::class, 'show']);
-
+// menu pizze completo
 Route::get("/pizze", "Api\PizzaController@index");
+// post store ordine
 Route::post("order", "Api\OrderController@store");

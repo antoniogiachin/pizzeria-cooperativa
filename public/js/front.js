@@ -2066,16 +2066,16 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Menu',
   data: function data() {
     return {
-      menu: []
+      pizze: []
     };
   },
   methods: {
     getMenu: function getMenu() {
       var _this = this;
 
-      axios.get('/api/menu').then(function (response) {
-        _this.menu = response.data.results;
-        console.log(_this.menu);
+      axios.get('api/pizze').then(function (response) {
+        _this.pizze = response.data.results;
+        console.log(_this.pizze);
       });
     }
   },
@@ -3581,7 +3581,7 @@ var render = function () {
     _c(
       "div",
       { staticClass: "row justify-content-center" },
-      _vm._l(_vm.menu, function (pizza, index) {
+      _vm._l(_vm.pizze, function (pizza, index) {
         return _c("div", { key: index, staticClass: "col-3 m-2" }, [
           _c("div", { staticClass: "card" }, [
             _c("img", {
@@ -20080,7 +20080,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progetti_LARAVEL/pizzeria-cooperativa/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/antoniogiachin/Downloads/pizzeria-cooperativa/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })
