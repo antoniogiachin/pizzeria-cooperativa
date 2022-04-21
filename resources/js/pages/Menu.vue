@@ -1,14 +1,20 @@
 <template>
-    <div class="container">
+    <div class="container py-5">
         <div class="row justify-content-center">
-            <img src="/img/diavola.jpeg" alt="">
             <div class="col-3 m-2" v-for="(pizza,index) in pizze" :key="index">
                 <div class="card ms_card">
                     <img :src="pizza.path" class="card-img-top ms_img" :alt="pizza.name">
                     <div class="card-body">
                         <h5 class="card-title">{{ pizza.name }}</h5>
                         <p class="card-text">Prezzo: {{pizza.price}}</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <div class="d-flex">
+                            <div class="me-2 p-1">
+                                <a href="#" class="btn btn-primary rounded-pill">Vedi Pizza</a>
+                            </div>
+                            <div class="me-2 p-1">
+                                <a href="#" class="btn btn-success rounded-pill">Aggiungi all'ordine</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

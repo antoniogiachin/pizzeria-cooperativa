@@ -2068,6 +2068,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Menu',
   data: function data() {
@@ -3686,45 +3692,60 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container py-5" }, [
     _c(
       "div",
       { staticClass: "row justify-content-center" },
-      [
-        _c("img", { attrs: { src: "/img/diavola.jpeg", alt: "" } }),
-        _vm._v(" "),
-        _vm._l(_vm.pizze, function (pizza, index) {
-          return _c("div", { key: index, staticClass: "col-3 m-2" }, [
-            _c("div", { staticClass: "card ms_card" }, [
-              _c("img", {
-                staticClass: "card-img-top ms_img",
-                attrs: { src: pizza.path, alt: pizza.name },
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("h5", { staticClass: "card-title" }, [
-                  _vm._v(_vm._s(pizza.name)),
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _vm._v("Prezzo: " + _vm._s(pizza.price)),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "btn btn-primary", attrs: { href: "#" } },
-                  [_vm._v("Go somewhere")]
-                ),
+      _vm._l(_vm.pizze, function (pizza, index) {
+        return _c("div", { key: index, staticClass: "col-3 m-2" }, [
+          _c("div", { staticClass: "card ms_card" }, [
+            _c("img", {
+              staticClass: "card-img-top ms_img",
+              attrs: { src: pizza.path, alt: pizza.name },
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v(_vm._s(pizza.name)),
               ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v("Prezzo: " + _vm._s(pizza.price)),
+              ]),
+              _vm._v(" "),
+              _vm._m(0, true),
             ]),
-          ])
-        }),
-      ],
-      2
+          ]),
+        ])
+      }),
+      0
     ),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex" }, [
+      _c("div", { staticClass: "me-2 p-1" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-primary rounded-pill", attrs: { href: "#" } },
+          [_vm._v("Vedi Pizza")]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "me-2 p-1" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-success rounded-pill", attrs: { href: "#" } },
+          [_vm._v("Aggiungi all'ordine")]
+        ),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
