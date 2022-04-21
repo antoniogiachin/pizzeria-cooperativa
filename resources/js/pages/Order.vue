@@ -76,12 +76,12 @@
     
         data(){
             return{
-                name: null,
-                number: null,
-                address: null,
-                pizzaSelected: null,
-                message: null,
-                pizze: null,
+                name: '',
+                number: '',
+                address: '',
+                pizzaSelected: '',
+                message: '',
+                pizze: '',
                 errors: {},
                 sending: false,
                 success: false
@@ -100,21 +100,21 @@
 
                 this.sending = true;
 
-                axios.post("api/order", {
+                axios.post('/api/orders', {
                     "name": this.name,
                     "number": this.number,
                     "address": this.address,
                     "pizzaSelected": this.pizzaSelected,
                     "message": this.message
                 }).then(response => {
-
+                    console.log(response);
                     if(response.data.success){
                         this.success = true;
-                        this.name = null;
-                        this.number = null;
-                        this.address = null;
-                        this.pizzaSelected = null;
-                        this.message =  null;
+                        this.name = '';
+                        this.number = '';
+                        this.address = '';
+                        this.pizzaSelected = '';
+                        this.message =  '';
                         this.errors = {};
                     }else{
                         this.errors = response.data.errors;

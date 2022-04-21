@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NewOrder;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -31,21 +32,18 @@ class OrderController extends Controller
                 "errors" => $validator->errors()
             ]);
 
-        }else{
+        } else {
 
             $order = new Order();
             $order->fill($data);
             $order->save();
 
 
-
-
-
             // preimpostato completare configurandolo opportunamente
-        Mail::to("ordine@pizzeria.it")->send(/* completare */);
+            Mail::to("ordine@pizzeria.com")->send(new NewOrder($order));
 
             return response()->json([
-                "success" => true
+                "success" => true,
             ]);
 
         }
