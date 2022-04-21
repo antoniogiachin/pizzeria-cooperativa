@@ -7,7 +7,7 @@
                 <h1>Aggiungi Pizza</h1>
 
                 {{-- Form creazione pizza --}}
-                <form method="POST" action="{{route(admin.pizzas.store)}}">
+                <form method="POST" action="{{route('admin.pizzas.store')}}">
                     @csrf
 
                     <div class="form-group">
@@ -20,10 +20,10 @@
                         <input type="number" name="price" id="price" step=".01" value="{{old('price')}}">
                     </div>
 
-                    <button type="submit" class="btn btn-primary"></button>
+                    <button type="submit" class="btn btn-primary my-2">Aggiungi</button>
 
                 </form>
-                <a href="{{url()->previous()}}" class="btn btn-primary">Torna indietro</a>
+                <a href="{{url()->previous()}}" class="btn btn-secondary">Torna indietro</a>
             </div>
         </div>
     </div>

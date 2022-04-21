@@ -24,7 +24,7 @@ Route::middleware('auth')
 ->prefix('admin')
 ->group(
     function(){
-        Route::get('/', [HomeController::class, 'index']);
+        Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::resource('pizzas', 'PizzaController');
     }
 );

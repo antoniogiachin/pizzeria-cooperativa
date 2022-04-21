@@ -7,7 +7,7 @@
                 <h1>Modifica {{$pizza->name}}</h1>
                 <h3>Slug: {{$pizza->slug}}</h3>
                 {{-- Form modifica pizza --}}
-                <form method="POST" action="{{route(admin.pizzas.update, $pizza->id)}}">
+                <form method="POST" action="{{route('admin.pizzas.update', $pizza->id)}}">
                     @csrf
                     @method('PUT')
 
@@ -21,10 +21,10 @@
                         <input type="number" name="price" id="price" step=".01" value="{{old('price', $pizza->price)}}">
                     </div>
 
-                    <button type="submit" class="btn btn-primary"></button>
+                    <button type="submit" class="btn btn-primary my-2">Modifica</button>
 
                 </form>
-                <a href="{{url()->previous()}}" class="btn btn-primary">Torna indietro</a>
+                <a href="{{url()->previous()}}" class="btn btn-secondary">Torna indietro</a>
             </div>
         </div>
     </div>

@@ -33,7 +33,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="mx-2"><a href="{{route('admin.home')}}">Dashboard</a></li>
+                        <li class="mx-2"><a href="{{route('admin.pizzas.index')}}">Pizze</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
