@@ -7,6 +7,7 @@ import Menu from './pages/Menu.vue';
 import Order from './pages/Order.vue';
 import Pizza from './pages/Pizza.vue';
 import NotFound from './pages/NotFound.vue';
+import Contacts from './pages/Contacts.vue';
 
 const router = new VueRouter(
 
@@ -39,6 +40,12 @@ const router = new VueRouter(
                 path: '/:pathMatch(.*)*',
                 name: 'NotFound',
                 component: NotFound
+            },
+            //rotta email
+            {
+                path: '/contacts',
+                name: 'contacts',
+                component: Contacts
             }
         ]
     }

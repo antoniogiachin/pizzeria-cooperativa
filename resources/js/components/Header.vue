@@ -38,6 +38,10 @@ export default {
                     to : 'order',
                     name : 'Ordina subito!',
                 },
+                {
+                    to : 'contacts',
+                    name : 'Contattaci',
+                }
             ]
         }
     },
