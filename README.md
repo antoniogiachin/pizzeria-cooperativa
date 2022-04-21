@@ -41,7 +41,7 @@ DatabaseSeeder.php oppure php artisan db:seed --class=NomeDelSeeder)
 ### 1
 - [x] Setup vue router e paginazione (homepage ,menu, chi siamo, invia ordine)
 - [ ] Ricezione menu tramite axios/api,
-- [x] stilizzazione pagina homepage 
+- [x] stilizzazione pagina homepage
 - [ ] stilizzazione pagina menu
 - [ ] stilizzazione pagina chi siamo
 - [ ] stilizzazione footer
