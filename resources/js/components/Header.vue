@@ -15,9 +15,9 @@
                         </li> -->
                     </ul>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                        <a class="nav-link text-white" href="/admin">Admin Access</a>
-                        </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="/admin">Admin Access</a>
+                            </li>
                     </ul>
                 </nav>
             </div>
