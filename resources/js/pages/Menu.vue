@@ -3,13 +3,14 @@
         <div class="row justify-content-center">
             <div class="col-3 m-2" v-for="(pizza,index) in pizze" :key="index">
                 <div class="card ms_card">
-                    <img :src="pizza.path" class="card-img-top ms_img" :alt="pizza.name">
+                    <img :src="pizza.path" v-if="pizza.path" class="card-img-top ms_img" :alt="pizza.name">
+                    <img :src="'storage/' + pizza.image" v-if="pizza.image" class="card-img-top ms_img" :alt="pizza.name">
                     <div class="card-body">
                         <h5 class="card-title">{{ pizza.name }}</h5>
                         <p class="card-text">Prezzo: {{pizza.price}}</p>
                         <div class="d-flex">
                             <div class="me-2 p-1">
-                                <a href="#" class="btn btn-primary rounded-pill">Vedi Pizza</a>
+                                <router-link :to="{name: 'pizza', params: {slug: pizza.slug, path: pizza.path} }" class="btn btn-primary rounded-pill">Vedi Pizza</router-link>
                             </div>
                             <div class="me-2 p-1">
                                 <a href="#" class="btn btn-success rounded-pill">Aggiungi all'ordine</a>
@@ -81,11 +82,13 @@ export default {
         setImgBySlug(arrayObj, arrayImgObj){
             arrayObj.forEach(obj => {
                 console.log(obj.slug)
+
                 for (let i = 0; i < arrayImgObj.length; i++) {
                     if(obj.slug == arrayImgObj[i].slugRef){
                         obj.path = arrayImgObj[i].path;
                     }
                 }
+
             });
 
             console.log(arrayObj);

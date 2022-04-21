@@ -26,6 +26,11 @@ class PizzaController extends Controller
         $pizza = Pizza::where('slug', $slug)->first();
 
         if($pizza){
+
+            if ($pizza->image) {
+                $pizza->image = url('storage/' . $pizza->image);
+            }
+
             return response()->json(
                 [
                     'results' => $pizza,
