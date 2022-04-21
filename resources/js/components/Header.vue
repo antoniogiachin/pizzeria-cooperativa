@@ -14,6 +14,11 @@
                             <router-link class="nav-link" :to="{name: 'order'}">Ordina la tua pizza!</router-link>
                         </li> -->
                     </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                        <a class="nav-link text-white" href="/admin">Admin Access</a>
+                        </li>
+                    </ul>
                 </nav>
             </div>
         </div>
