@@ -7,7 +7,7 @@
                 <h1>Modifica {{$pizza->name}}</h1>
                 <h3>Slug: {{$pizza->slug}}</h3>
                 {{-- Form modifica pizza --}}
-                <form method="POST" action="{{route('admin.pizzas.update', $pizza->id)}}">
+                <form method="POST" action="{{route('admin.pizzas.update', $pizza->id)}}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -19,6 +19,21 @@
                     <div class="form-group">
                         <label for="price">Prezzo</label>
                         <input type="number" name="price" id="price" step=".01" value="{{old('price', $pizza->price)}}">
+                    </div>
+
+                    {{-- gestione inserimento immagine --}}
+                    <h3 class="mt-2">Immagine precedente</h3>
+                    @if ($pizza->image)
+                        <div class="px-0 py-2">
+                            <img src="{{ asset('storage/' . $pizza->image) }}" alt="" class="img-fluid w-25">
+                        </div>
+                    @else
+                        <p>Nessuna immagine precedentemente inserita nel DataBase</p>
+                    @endif
+
+                    <div class="form-group">
+                        <label for="imageFile">Inserisci una immagine</label>
+                        <input type="file" name="imageFile" id="imageFile">
                     </div>
 
                     <button type="submit" class="btn btn-primary my-2">Modifica</button>

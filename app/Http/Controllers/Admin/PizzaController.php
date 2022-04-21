@@ -46,7 +46,7 @@ class PizzaController extends Controller
                 [
                     'name' => 'required|min:1',
                     'price' => 'required|min:1',
-
+                    'imageFile'=> 'nullable|image|max:4096',
                 ]
             );
 
@@ -63,6 +63,12 @@ class PizzaController extends Controller
             }
 
             $data['slug'] = $slug;
+
+            // storage immagine
+            if(isset($data['imageFile'])){
+                $image_path = Storage::put('uploads', $data['imageFile']);
+                $data['image'] = $image_path;
+            }
 
             $pizza = new Pizza();
 
@@ -117,6 +123,7 @@ class PizzaController extends Controller
             [
                 'name' => 'required|min:1',
                 'price' => 'required|min:1',
+                'imageFile' => 'nullable|image|max:4096',
             ]
         );
 
@@ -132,13 +139,24 @@ class PizzaController extends Controller
 
             }
 
-            $data['slug'] = $slug;
+        // storage immagine
+        if (isset($data['imageFile'])) {
 
-            $pizza->fill($data);
+            if ($pizza->image) {
+                Storage::delete($pizza->image);
+            }
 
-            $pizza->save();
+            $image_path = Storage::put('uploads', $data['imageFile']);
+            $data['image'] = $image_path;
+        }
 
-            return redirect()->route('admin.pizzas.index', ['pizza' => $pizza->id])->with('status', 'pizza added successfully');
+
+
+        $data['slug'] = $slug;
+        $pizza->update($data);
+        $pizza->save();
+
+        return redirect()->route('admin.pizzas.index', ['pizza' => $pizza->id])->with('status', 'pizza edit successfully');
 
 
 
@@ -151,6 +169,10 @@ class PizzaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Pizza $pizza) {
+
+        if ($pizza->image) {
+            Storage::delete($pizza->image);
+        }
 
         $pizza->delete();
 
