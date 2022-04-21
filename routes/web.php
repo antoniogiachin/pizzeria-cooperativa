@@ -19,7 +19,7 @@ Auth::routes();
 
 // rotte Admin
 Route::middleware('auth')
-->namespace('admin')
+->namespace('Admin')
 ->name('admin.')
 ->prefix('admin')
 ->group(
