@@ -1,30 +1,25 @@
 <template>
   
-  <footer class="container-fluid bg-dark text-center text-white">
+  <footer class="container-fluid bg-dark text-center text-white mt-5">
 
     <div class="d-flex justify-content-center">
         <div class="container row py-4">
 
         <div class="col">
-          <a class="btn btn-outline-light btn-floating" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-outline-light" href="#"><i class="bi bi-facebook"></i></a>
         </div>
         
         <div class="col">
-          <a class="btn btn-outline-light btn-floating" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="btn btn-outline-light " href="#"><i class="bi bi-twitter"></i></a>
         </div>
 
         <div class="col">
-          <a class="btn btn-outline-light btn-floating" href="#"><i class="fab fa-google"></i></a>
+          <a class="btn btn-outline-light" href="#"><i class="bi bi-google"></i></a>
         </div>
 
         <div class="col">
-          <a class="btn btn-outline-light btn-floating" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="btn btn-outline-light" href="#"><i class="bi bi-instagram"></i></a>
         </div>
-
-        <div class="col">
-          <a class="btn btn-outline-light btn-floating" href="#"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-      
       </div>
     </div>
 
@@ -93,6 +88,10 @@
 </script>
 
 <style scoped>
+
+  .bi-facebook, .bi-twitter, .bi-google, .bi-instagram{
+    font-size: 1rem;
+  } 
 
   .ms_backgroundColorCopyright{
     background-color: rgba(0, 0, 0, 0.2);

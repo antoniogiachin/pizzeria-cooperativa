@@ -1991,11 +1991,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Footer'
 });
@@ -2483,7 +2478,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.ms_backgroundColorCopyright[data-v-61a7c374]{\n  background-color: rgba(0, 0, 0, 0.2);\n}\n\n", ""]);
+exports.push([module.i, "\n.bi-facebook[data-v-61a7c374], .bi-twitter[data-v-61a7c374], .bi-google[data-v-61a7c374], .bi-instagram[data-v-61a7c374]{\n  font-size: 1rem;\n}\n.ms_backgroundColorCopyright[data-v-61a7c374]{\n  background-color: rgba(0, 0, 0, 0.2);\n}\n\n", ""]);
 
 // exports
 
@@ -3650,7 +3645,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "footer",
-    { staticClass: "container-fluid bg-dark text-center text-white" },
+    { staticClass: "container-fluid bg-dark text-center text-white mt-5" },
     [
       _vm._m(0),
       _vm._v(" "),
@@ -3706,55 +3701,32 @@ var staticRenderFns = [
         _c("div", { staticClass: "col" }, [
           _c(
             "a",
-            {
-              staticClass: "btn btn-outline-light btn-floating",
-              attrs: { href: "#" },
-            },
-            [_c("i", { staticClass: "fab fa-facebook-f" })]
+            { staticClass: "btn btn-outline-light", attrs: { href: "#" } },
+            [_c("i", { staticClass: "bi bi-facebook" })]
           ),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col" }, [
           _c(
             "a",
-            {
-              staticClass: "btn btn-outline-light btn-floating",
-              attrs: { href: "#" },
-            },
-            [_c("i", { staticClass: "fab fa-twitter" })]
+            { staticClass: "btn btn-outline-light ", attrs: { href: "#" } },
+            [_c("i", { staticClass: "bi bi-twitter" })]
           ),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col" }, [
           _c(
             "a",
-            {
-              staticClass: "btn btn-outline-light btn-floating",
-              attrs: { href: "#" },
-            },
-            [_c("i", { staticClass: "fab fa-google" })]
+            { staticClass: "btn btn-outline-light", attrs: { href: "#" } },
+            [_c("i", { staticClass: "bi bi-google" })]
           ),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col" }, [
           _c(
             "a",
-            {
-              staticClass: "btn btn-outline-light btn-floating",
-              attrs: { href: "#" },
-            },
-            [_c("i", { staticClass: "fab fa-instagram" })]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col" }, [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-outline-light btn-floating",
-              attrs: { href: "#" },
-            },
-            [_c("i", { staticClass: "fab fa-linkedin-in" })]
+            { staticClass: "btn btn-outline-light", attrs: { href: "#" } },
+            [_c("i", { staticClass: "bi bi-instagram" })]
           ),
         ]),
       ]),
