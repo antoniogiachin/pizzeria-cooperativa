@@ -7,6 +7,7 @@
     <title>HomePage</title>
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}"> --}}
 </head>
 <body>
     <div id="root">
