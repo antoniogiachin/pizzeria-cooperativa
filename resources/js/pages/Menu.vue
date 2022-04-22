@@ -7,6 +7,7 @@
                     <img :src="'storage/' + pizza.image" v-if="pizza.image" class="card-img-top ms_img" :alt="pizza.name">
                     <div class="card-body">
                         <h5 class="card-title">{{ pizza.name }}</h5>
+                        <h6 class="card-text">{{ category ? category.name : ''}}</h6>
                         <p class="card-text">Prezzo: {{pizza.price}}</p>
 
                         <!-- tags -->

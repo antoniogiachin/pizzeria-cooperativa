@@ -6,7 +6,8 @@
             <div class="col-md-12">
 
                 <h1>{{$pizza->name}}</h1>
-
+                
+                <strong>Categoria: </strong> {{isset($post->category) ? $post->category->name : "NULL"}}
                 <div><strong>Prezzo: </strong> {{$pizza->price}} </div>
                 <div><strong>Slug: </strong> {{$pizza->slug}} </div>
                 <h3 class="mt-3">Immagine</h3>

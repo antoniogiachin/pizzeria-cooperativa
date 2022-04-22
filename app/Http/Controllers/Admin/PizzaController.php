@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Pizza;
@@ -19,7 +20,7 @@ class PizzaController extends Controller
      */
     public function index()
     {
-        $pizzas = Pizza::all();
+        $pizzas = Pizza::with("category")->get();
 
         return view('admin.pizzas.index', compact('pizzas'));
     }
@@ -31,9 +32,11 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        $tags = Tag::all();
 
-        return view('admin.pizzas.create', compact("tags"));
+        $tags = Tag::all();
+        $categories = Category::all();
+        return view('admin.pizzas.create', compact("tags", "categories));
+
     }
 
     /**
@@ -110,10 +113,16 @@ class PizzaController extends Controller
     public function edit($id)
     {
         $pizza = Pizza::find($id);
+
+        $categories = Category::all();
+
+        
+
         $tags = Tag::all();
 
         if ($pizza) {
-            return view('admin.pizzas.edit', compact('pizza', "tags"));
+            return view('admin.pizzas.edit', compact('pizza', "tags", "categories"));
+
         } else {
             abort(404);
         }
