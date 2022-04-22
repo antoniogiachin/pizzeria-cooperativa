@@ -13,8 +13,8 @@
                 <div v-if="success" class="alert alert-success">
                     Ordine preso in carico. Presto saremo da te!
                 </div>
-                
-                
+
+
                 <form @submit.prevent="sendForm()">
 
                     <div class="form-group">
@@ -61,7 +61,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">{{sending ? "invio in corso" : "Invia"}}</button>
-                    
+
                 </form>
 
             </div>
@@ -73,7 +73,7 @@
 <script>
     export default {
         name: 'Order',
-    
+
         data(){
             return{
                 name: '',
@@ -84,7 +84,7 @@
                 pizze: '',
                 errors: {},
                 sending: false,
-                success: false
+                success: false,
             }
         },
 
@@ -92,6 +92,9 @@
             axios.get("/api/pizze")
                 .then(response => {
                     this.pizze = response.data.results;
+                    if(this.$route.params.pizza){
+                        this.pizzaSelected = this.$route.params.pizza;
+                    }
                 });
         },
 
