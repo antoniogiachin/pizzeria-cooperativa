@@ -8,6 +8,15 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ pizza.name }}</h5>
                         <p class="card-text">Prezzo: {{pizza.price}}</p>
+
+                        <!-- tags -->
+                        <div v-if="pizza.tags.length != 0">
+                            <span class="mr-2" v-for="tag in pizza.tags" :key="tag.id">
+                                 <a href="#" class="badge badge-pill bg-primary text-white my-3">{{tag.name}}</a>
+                            </span>
+                           
+                        </div>
+
                         <div class="d-flex">
                             <div class="me-2 p-1">
                                 <router-link :to="{name: 'pizza', params: {slug: pizza.slug, path: pizza.path} }" class="btn btn-primary rounded-pill">Vedi Pizza</router-link>
