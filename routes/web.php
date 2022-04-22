@@ -27,6 +27,7 @@ Route::middleware('auth')
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::resource('pizzas', 'PizzaController');
         Route::resource('orders', 'OrderController');
+        Route::resource('categories', 'CategoryController');
     }
 );
 // rotta catch all
