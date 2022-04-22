@@ -36,6 +36,15 @@
                         <input type="file" name="imageFile" id="imageFile">
                     </div>
 
+                    @foreach ($tags as $tag)
+        
+                        <div class="custom-control custom-checkbox">
+                            <input name="tags[]" type="checkbox" class="custom-control-input" id="tag_{{$tag->id}}" value={{$tag->id}} {{($pizza->tags->contains($tag->id) || in_array($tag->id, old('tags', []))) ? "checked" : ""}}> 
+                            <label class="custom-control-label" for="tag_{{$tag->id}}">{{$tag->name}}</label>
+                        </div>
+                    
+                    @endforeach
+
                     <button type="submit" class="btn btn-primary my-2">Modifica</button>
 
                 </form>

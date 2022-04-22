@@ -19,6 +19,14 @@
                     @endif
                 </div>
 
+                
+               <div class="my-3">
+                    @foreach ($pizza->tags as $tag)
+                        <a href="#" class="badge badge-pill bg-primary text-white my-3">{{$tag->name}}</a>
+                    @endforeach
+               </div>
+                
+
                 <a href="{{url()->previous()}}" class="btn btn-primary">Torna indietro</a>
 
             </div>

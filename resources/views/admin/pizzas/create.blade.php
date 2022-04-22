@@ -11,15 +11,10 @@
                     {{-- token sicurezza --}}
                     @csrf
 
-                    <div class="form-group">
-                        <label for="name">Nome</label>
-                        <input type="text" name="name" id="name" placeholder="Nome" value="{{old('name')}}">
-                    </div>
+                    <div class="d-flex">
 
-                    <div class="form-group">
-                        <label for="price">Prezzo</label>
-                        <input type="number" name="price" id="price" step=".01" value="{{old('price')}}">
-                    </div>
+
+                   
                     
 
                     {{-- gestione inserimento categoria --}}
@@ -38,10 +33,39 @@
                     </div>
 
 
-                    {{-- gestione inserimento immagine --}}
-                    <div class="form-group">
-                        <label for="imageFile">Inserisci una immagine</label>
-                        <input type="file" name="imageFile" id="imageFile">
+                        {{-- parte sinistra --}}
+                        <div class="mr-4">
+                            <div class="form-group">
+                                <label for="name">Nome</label>
+                                <input type="text" name="name" id="name" placeholder="Nome" value="{{old('name')}}">
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="price">Prezzo</label>
+                                <input type="number" name="price" id="price" step=".01" value="{{old('price')}}">
+                            </div>
+        
+                            {{-- gestione inserimento immagine --}}
+                            <div class="form-group">
+                                <label for="imageFile">Inserisci una immagine</label>
+                                <input type="file" name="imageFile" id="imageFile">
+                            </div>
+                        </div>
+    
+                        {{-- parte destra --}}
+                        <div class="ml-4">
+    
+                            {{-- gestione inserimento tags --}}
+                            @foreach ($tags as $tag)
+                                <div class="form-check">
+                                    <input name="tags[]" class="form-check-input" type="checkbox" value="{{$tag->id}}" id="tag_{{$tag->id}}" {{in_array($tag->id, old("tags", [])) ? "checked" : ""}}>
+                                    <label class="form-check-label" for="tag_{{$tag->id}}">{{$tag->name}}</label>
+                                </div>
+                            @endforeach 
+    
+                        </div>
+
+
                     </div>
 
                     <button type="submit" class="btn btn-primary my-2">Aggiungi</button>

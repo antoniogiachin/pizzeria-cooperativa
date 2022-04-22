@@ -36,7 +36,11 @@
                         <li class="mx-2"><a href="{{route('admin.home')}}">Dashboard</a></li>
                         <li class="mx-2"><a href="{{route('admin.pizzas.index')}}">Pizze</a></li>
                         <li class="mx-2"><a href="{{route('admin.orders.index')}}">Ordini</a></li>
+
                         <li class="mx-2"><a href="{{route('admin.categories.index')}}">Categorie</a></li>
+
+                        <li class="mx-2"><a href="{{route('admin.tags.index')}}">Tags</a></li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
