@@ -25,7 +25,7 @@ const router = new VueRouter(
                 component: Menu
             },
             {
-                path: '/order',
+                path: '/:pizza?/order',
                 name: 'order',
                 component: Order
             },
