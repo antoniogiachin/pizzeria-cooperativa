@@ -22,7 +22,7 @@
                                 <router-link :to="{name: 'pizza', params: {slug: pizza.slug, path: pizza.path} }" class="btn btn-primary rounded-pill">Vedi Pizza</router-link>
                             </div>
                             <div class="me-2 p-1">
-                                <a href="#" class="btn btn-success rounded-pill">Aggiungi all'ordine</a>
+                                <router-link :to="{name: 'order', params: {pizza : pizza.slug}}" class="btn btn-success rounded-pill">Aggiungi all'ordine</router-link>
                             </div>
                         </div>
                     </div>
