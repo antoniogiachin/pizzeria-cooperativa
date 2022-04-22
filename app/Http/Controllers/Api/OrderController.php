@@ -19,12 +19,12 @@ class OrderController extends Controller
             "name" => "required | min:3",
             "number" => "required | min:9 | max: 13",
             "address" => "required | min: 5",
-            "pizzaSelected" => "required | min: 4 | max: 20", 
+            "pizzaSelected" => "required | min: 4 | max: 20",
             "message" => "required | min:8 | max:500"
         ]);
 
-       
-      
+
+
         if($validator->fails()){
 
             return response()->json([
@@ -48,5 +48,38 @@ class OrderController extends Controller
 
         }
 
+    }
+
+    public function index()
+    {
+
+        $orders = Order::all();
+        return response()->json(
+            [
+                'results' => $orders,
+                'success' => true,
+            ]
+        );
+    }
+
+    public function show($id)
+    {
+        $order = Order::where('id', $id)->first();
+
+        if ($order) {
+            return response()->json(
+                [
+                    'results' => $order,
+                    'success' => true,
+                ]
+            );
+        } else {
+            return response()->json(
+                [
+                    'results' => 'Ordine non presente nei nostri sistemi',
+                    'success' => false,
+                ]
+            );
+        }
     }
 }

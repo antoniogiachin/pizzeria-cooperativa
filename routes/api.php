@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PizzaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,7 @@ Route::get("/pizze", "Api\PizzaController@index");
 Route::post("/orders", "Api\OrderController@store");
 // /api/contacts
 Route::post('/contacts', 'Api\ContactController@store');
+// api get order
+Route::get('/orders', [OrderController::class, 'index']);
+// api per ordine singolo
+Route::get('/order/{id}', [OrderController::class, 'show']);
