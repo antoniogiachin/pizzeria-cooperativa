@@ -8,6 +8,7 @@ import Order from './pages/Order.vue';
 import Pizza from './pages/Pizza.vue';
 import NotFound from './pages/NotFound.vue';
 import Contacts from './pages/Contacts.vue';
+import About from './pages/About.vue'
 
 const router = new VueRouter(
 
@@ -46,6 +47,11 @@ const router = new VueRouter(
                 path: '/contacts',
                 name: 'contacts',
                 component: Contacts
+            },
+            {
+                path: '/about',
+                name: 'about',
+                component: About
             }
         ]
     }
