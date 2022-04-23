@@ -35,7 +35,7 @@ class PizzaController extends Controller
 
         $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.pizzas.create', compact("tags", "categories));
+        return view('admin.pizzas.create', compact("tags", "categories"));
 
     }
 
@@ -116,7 +116,7 @@ class PizzaController extends Controller
 
         $categories = Category::all();
 
-        
+
 
         $tags = Tag::all();
 
