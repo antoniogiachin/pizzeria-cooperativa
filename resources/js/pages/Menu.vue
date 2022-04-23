@@ -7,7 +7,7 @@
                     <img :src="'storage/' + pizza.image" v-if="pizza.image" class="card-img-top ms_img" :alt="pizza.name">
                     <div class="card-body">
                         <h5 class="card-title">{{ pizza.name }}</h5>
-                        <h6 class="card-text">{{ category ? category.name : ''}}</h6>
+                        <h6 class="card-text"> {{ category ? category.name : ''}} </h6>
                         <p class="card-text">Prezzo: {{pizza.price}}</p>
 
                         <!-- tags -->
@@ -15,7 +15,7 @@
                             <span class="mr-2" v-for="tag in pizza.tags" :key="tag.id">
                                  <a href="#" class="badge badge-pill bg-primary text-white my-3">{{tag.name}}</a>
                             </span>
-                           
+
                         </div>
 
                         <div class="d-flex">
@@ -23,7 +23,7 @@
                                 <router-link :to="{name: 'pizza', params: {slug: pizza.slug, path: pizza.path} }" class="btn btn-primary rounded-pill">Vedi Pizza</router-link>
                             </div>
                             <div class="me-2 p-1">
-                                <router-link :to="{name: 'order', params: {pizza : pizza.slug}}" class="btn btn-success rounded-pill">Aggiungi all'ordine</router-link>
+                                <router-link :to="{name: 'order', params: {pizza : pizza}}" class="btn btn-success rounded-pill">Aggiungi all'ordine</router-link>
                             </div>
                         </div>
                     </div>

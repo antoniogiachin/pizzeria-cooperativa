@@ -50,3 +50,13 @@ DatabaseSeeder.php oppure php artisan db:seed --class=NomeDelSeeder)
 - [x] gestione invio ordine -> form invio ordine(api post)
 - [x] orderController e model Order
 - [ ] visualizzazione ordine inviato (api get)
+
+
+## Passaggi per multiselect -   https://vue-multiselect.js.org/#sub-multiple-select
+- npm install vue-multiselect --save
+- cancellare front.js in public/js
+- npm run watch
+- composer require doctrine/dbal
+- andare in composer.json e cmabiare dbail in "^2.0",
+- composer update
+- php artisan migrate

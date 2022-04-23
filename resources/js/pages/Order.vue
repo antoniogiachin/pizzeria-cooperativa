@@ -41,7 +41,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="pizzaSelected">Pizza</label>
                          <select class="custom-select" id="inputGroupSelect01" :class="{'is-invalid': errors.pizzaSelected}" name="selectedAddress" v-model="pizzaSelected">
                             <option selected>Choose...</option>
@@ -50,6 +50,16 @@
                         <div v-for="(error, index) in errors.pizzaSelected" :key="'error_pizzaSelected' + index" class="invalid-feedback">
                             {{error}}
                         </div>
+                    </div> -->
+
+                    <!-- checkbox pizze -->
+                    <div>
+                        <label class="typo__label">Simple select / dropdown</label>
+                        <multiselect v-model="value" :options="pizze" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Seleziona la pizza" label="name" track-by="name" :preselect-first="true">
+                            <template slot="selection" slot-scope="{ values, search, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} Pizze selezionate</span></template>
+                        </multiselect>
+                        <h5 class="my-2 mx-0">Hai scelto: </h5>
+                        <span class="badge bg-success mr-2 mb-3" v-for="(pizza,index) in value" :key="index">{{pizza.name}}</span>
                     </div>
 
                     <div class="form-group">
@@ -71,8 +81,14 @@
 </template>
 
 <script>
+    import Multiselect from 'vue-multiselect';
+
     export default {
         name: 'Order',
+
+        components: {
+            Multiselect,
+        },
 
         data(){
             return{
@@ -81,10 +97,13 @@
                 address: '',
                 pizzaSelected: '',
                 message: '',
-                pizze: '',
+                pizze: {},
                 errors: {},
                 sending: false,
                 success: false,
+                // prova multiselect
+                value: [],
+                try: [],
             }
         },
 
@@ -93,14 +112,22 @@
                 .then(response => {
                     this.pizze = response.data.results;
                     if(this.$route.params.pizza){
-                        this.pizzaSelected = this.$route.params.pizza;
+                        this.value.push(this.$route.params.pizza)
                     }
+
                 });
         },
 
         methods:{
             sendForm(){
-
+                const valueName = [];
+                this.value.forEach(value => {
+                    valueName.push(value.name);
+                })
+                console.log(valueName)
+                this.try = valueName.toString();
+                this.pizzaSelected = this.try;
+                console.log(this.pizzaSelected);
                 this.sending = true;
 
                 axios.post('/api/orders', {
@@ -125,12 +152,17 @@
 
                     this.sending = false;
                 });
+            },
+            turnSelectionString(){
+                const valueName = [];
+                this.value.forEach(value => {
+                    valueName.push(value.name);
+                })
+                this.pizzaSelcted = valueName.toString();
             }
         }
     }
 </script>
 
 
-<style>
-
-</style>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
