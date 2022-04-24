@@ -18,11 +18,21 @@ class PizzaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pizzas = Pizza::with("category")->get();
+        $data = $request->all();
+        $categoryId =  $data["category_id"];
 
-        return view('admin.pizzas.index', compact('pizzas'));
+        $categories = Category::all();
+
+        // filtro per categorie
+        if($data["category_id"] == null){
+            $pizzas = Pizza::with("category")->get();
+        }else{
+            $pizzas = Pizza::with("category")->where("category_id", $categoryId)->get(); 
+        }
+
+        return view('admin.pizzas.index', compact('pizzas', 'categories', 'categoryId'));
     }
 
     /**

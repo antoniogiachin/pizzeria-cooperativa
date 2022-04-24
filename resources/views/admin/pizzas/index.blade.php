@@ -5,8 +5,30 @@
 <div class="container">
     <table class="table">
 
-        <a href="{{route('admin.pizzas.create')}}" class="btn btn-warning mb-3">Create new pizza</a>
-        
+       <div class="d-flex justify-content-between">
+            <a href="{{route('admin.pizzas.create')}}" class="btn btn-warning mb-3">Create new pizza</a>
+
+            {{-- filtro categoria --}}
+            <form method="GET" action="{{route('admin.pizzas.index')}}">
+
+                @csrf
+
+                <div class="d-flex align-items-center">
+
+                    <select class="form-control" id="category_id" name="category_id">
+
+                        <option value="">Tutte le categorie</option>
+                        @foreach ($categories as $category )    
+                            <option {{$categoryId == $category->id ? "selected" : ""}} value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                
+                    </select>
+
+                    <button type="submit" class="btn btn-primary ml-3">Cerca</button>
+                </div>
+            </form>
+       </div>
+       
         <thead>
         <tr>
             <th scope="col">#</th>
