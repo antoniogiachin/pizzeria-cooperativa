@@ -56,9 +56,9 @@ class CategoryController extends Controller
 
         $data['slug'] = $slug;
 
-        $post = new Category();
-        $post->fill($data);
-        $post->save();
+        $pizza = new Category();
+        $pizza->fill($data);
+        $pizza->save();
 
         return redirect()->route('admin.categories.index');
 
