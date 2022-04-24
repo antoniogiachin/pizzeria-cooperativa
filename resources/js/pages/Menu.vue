@@ -7,7 +7,7 @@
                     <img :src="'storage/' + pizza.image" v-if="pizza.image" class="card-img-top ms_img" :alt="pizza.name">
                     <div class="card-body">
                         <h5 class="card-title">{{ pizza.name }}</h5>
-                        <h6 class="card-text"> {{ category ? category.name : ''}} </h6>
+                        <h6 class="card-text"> {{ pizza.category ? pizza.category.name : ''}} </h6>
                         <p class="card-text">Prezzo: {{pizza.price}}</p>
 
                         <!-- tags -->
@@ -85,13 +85,13 @@ export default {
                 this.pizze = response.data.results;
                 // dopo lancia la funzione per settare in ciascun oggetto pizza la path img
                 this.setImgBySlug(this.pizze, this.pizzeStandardImg);
-                console.log(this.pizze);
+                //console.log(this.pizze);
             })
         },
         // funzione per settare immagine corrispondente a slug
         setImgBySlug(arrayObj, arrayImgObj){
             arrayObj.forEach(obj => {
-                console.log(obj.slug)
+                //console.log(obj.slug)
 
                 for (let i = 0; i < arrayImgObj.length; i++) {
                     if(obj.slug == arrayImgObj[i].slugRef){
@@ -101,7 +101,7 @@ export default {
 
             });
 
-            console.log(arrayObj);
+            //console.log(arrayObj);
         }
     },
     mounted () {
