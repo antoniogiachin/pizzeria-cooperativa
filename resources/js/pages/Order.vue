@@ -55,7 +55,7 @@
                     <!-- checkbox pizze -->
                     <div>
                         <label class="typo__label">Simple select / dropdown</label>
-                        <multiselect v-model="value" :options="pizze" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Seleziona la pizza" label="name" track-by="name" :preselect-first="true">
+                        <multiselect  v-model="value" :options="pizze" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Seleziona la pizza" label="name" track-by="name" :preselect-first="true">
                             <template slot="selection" slot-scope="{ values, search, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} Pizze selezionate</span></template>
                         </multiselect>
                         <h5 class="my-2 mx-0">Hai scelto: </h5>
@@ -97,7 +97,7 @@
                 address: '',
                 pizzaSelected: '',
                 message: '',
-                pizze: {},
+                pizze: [],
                 errors: {},
                 sending: false,
                 success: false,
