@@ -1,6 +1,6 @@
 <template>
-    <div class="container border-2 rounded bg-primary">
-        <div class="row">
+    <div class="container-fluid border-2 rounded bg-primary">
+        <div class="row position-relative">
             <div class="col-10 offset-1">
                 <nav class="py-2">
                     <ul class="nav justify-content-center">
@@ -13,12 +13,15 @@
                         <li class="nav-item">
                             <router-link class="nav-link" :to="{name: 'order'}">Ordina la tua pizza!</router-link>
                         </li> -->
+                        <li class="nav-item position-absolute ms_right0">
+                            <a class="nav-link text-white" href="/admin">Admin Access</a>
+                        </li>
                     </ul>
-                    <ul class="navbar-nav ms-auto">
+                    <!-- <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
                             <a class="nav-link" href="/admin">Admin Access</a>
                             </li>
-                    </ul>
+                    </ul> -->
                 </nav>
             </div>
         </div>
@@ -53,8 +56,12 @@ export default {
 }
 </script>
 
-<style>
-.router-link-exact-active{
-    text-transform: uppercase;
-}
+<style scoped>
+    .router-link-exact-active{
+        text-transform: uppercase;
+    }
+
+    .ms_right0{
+        right: 0;
+    }
 </style>
