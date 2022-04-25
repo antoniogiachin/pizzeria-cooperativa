@@ -24,6 +24,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/menu/{slug}', [PizzaController::class, 'show']);
 // menu pizze completo
 Route::get("/pizze", "Api\PizzaController@index");
+// menu pizze filtrato
+Route::get("/pizze/{id}", "Api\PizzaController@filter");
 // post store ordine
 Route::post("/orders", "Api\OrderController@store");
 // /api/contacts

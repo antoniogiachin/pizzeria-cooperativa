@@ -1,13 +1,46 @@
 <template>
     <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-3 m-2" v-for="(pizza,index) in pizze" :key="index">
+
+        <div class="row">
+            <div class="col">
+
+                 <form @submit.prevent="getMenuFiltered()">
+
+                    <div class="d-flex justify-content-center align-items-center my-4">
+
+                        <span class="mr-3">Categoria</span>
+
+                        <div class="form-group mb-0 mr-3">
+                            <select class="custom-select" id="categorySelected" name="categorySelected" v-model="categorySelected">
+                                <option value="">Tutte le categorie</option>
+                                <option v-for="categoria in categorie" :key="categoria.id" :value="categoria.id" >{{categoria.name}}</option>
+                            </select>
+                        
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Cerca</button>
+
+                    </div>
+
+                    
+
+                </form>
+
+            </div>
+        </div>
+
+
+
+        <div class="row justify-content-center" v-if="pizze.length">
+            <div class="col-3 m-2 card-group"  v-for="(pizza,index) in pizze" :key="index">
                 <div class="card ms_card">
                     <img :src="pizza.path" v-if="pizza.path" class="card-img-top ms_img" :alt="pizza.name">
                     <img :src="'storage/' + pizza.image" v-if="pizza.image" class="card-img-top ms_img" :alt="pizza.name">
                     <div class="card-body">
                         <h5 class="card-title">{{ pizza.name }}</h5>
-                        <h6 class="card-text"> {{ pizza.category ? pizza.category.name : ''}} </h6>
+
+                        <!-- <h6 class="card-text"> {{ category ? category.name : ''}} </h6> -->
+
                         <p class="card-text">Prezzo: {{pizza.price}}</p>
 
                         <!-- tags -->
@@ -15,7 +48,6 @@
                             <span class="mr-2" v-for="tag in pizza.tags" :key="tag.id">
                                  <a href="#" class="badge badge-pill bg-primary text-white my-3">{{tag.name}}</a>
                             </span>
-
                         </div>
 
                         <div class="d-flex">
@@ -30,6 +62,9 @@
                 </div>
             </div>
         </div>
+        <div v-else class="row justify-content-center">
+            Non ci sono pizze appartenenti alla categoria selezionata
+        </div>
     </div>
 </template>
 
@@ -39,6 +74,8 @@ export default {
     data() {
         return {
             pizze: [],
+            categorie: [],
+            categorySelected: "",
             // creo array di oggetti con path immagine e slug per reference
             pizzeStandardImg : [
                 {
@@ -80,18 +117,38 @@ export default {
     },
     methods: {
         getMenu() {
-            axios.get('api/pizze')
+
+            if(this.categorySelected == ""){
+                axios.get('api/pizze')
+                    .then(response =>{
+                        this.pizze = response.data.results["pizzas"];
+                        // dopo lancia la funzione per settare in ciascun oggetto pizza la path img
+                        this.setImgBySlug(this.pizze, this.pizzeStandardImg);
+                        // console.log(this.pizze);
+                    })
+            }
+            
+        },
+
+        getMenuFiltered(){
+            this.pizze = [];
+            axios.get('api/pizze/' + this.categorySelected)
             .then(response =>{
-                this.pizze = response.data.results;
+                this.pizze = response.data.results["pizzas"];
                 // dopo lancia la funzione per settare in ciascun oggetto pizza la path img
                 this.setImgBySlug(this.pizze, this.pizzeStandardImg);
-                //console.log(this.pizze);
+
+                // console.log(this.pizze);
+
             })
         },
+
         // funzione per settare immagine corrispondente a slug
         setImgBySlug(arrayObj, arrayImgObj){
             arrayObj.forEach(obj => {
-                //console.log(obj.slug)
+
+                // console.log(obj.slug)
+
 
                 for (let i = 0; i < arrayImgObj.length; i++) {
                     if(obj.slug == arrayImgObj[i].slugRef){
@@ -101,11 +158,18 @@ export default {
 
             });
 
-            //console.log(arrayObj);
+            // console.log(arrayObj);
+
         }
     },
     mounted () {
         this.getMenu();
+
+        // prelevo tutte le categorie
+         axios.get('api/pizze')
+            .then(response =>{
+                this.categorie = response.data.results["categories"];
+            })
     },
 }
 </script>
