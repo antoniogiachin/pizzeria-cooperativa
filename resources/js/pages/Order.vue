@@ -124,10 +124,10 @@
                 this.value.forEach(value => {
                     valueName.push(value.name);
                 })
-                console.log(valueName)
+                // console.log(valueName)
                 this.try = valueName.toString();
                 this.pizzaSelected = this.try;
-                console.log(this.pizzaSelected);
+                // console.log(this.pizzaSelected);
                 this.sending = true;
 
                 axios.post('/api/orders', {
@@ -137,7 +137,7 @@
                     "pizzaSelected": this.pizzaSelected,
                     "message": this.message
                 }).then(response => {
-                    console.log(response);
+                    // console.log(response);
                     if(response.data.success){
                         this.success = true;
                         this.name = '';
