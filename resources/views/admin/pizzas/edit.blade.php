@@ -21,6 +21,22 @@
                         <input type="number" name="price" id="price" step=".01" value="{{old('price', $pizza->price)}}">
                     </div>
 
+                      {{-- gestione inserimento categoria --}}
+                    <div class="form-group">
+
+                        <label for="category_id">Categoria</label>
+                        <select class="form-control" id="category_id" name="category_id">
+    
+                            <option value="">Nessuna categoria</option>
+                            @foreach ($categories as $category )    
+                                <option {{(old('category_id', $pizza->category_id) == $category->id) ? 'selected': ''}} value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                    
+                        </select>
+    
+                    </div>
+
+
                     {{-- gestione inserimento immagine --}}
                     <h3 class="mt-2">Immagine precedente</h3>
                     @if ($pizza->image)
