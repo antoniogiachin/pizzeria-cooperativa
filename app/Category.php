@@ -8,7 +8,7 @@ class Category extends Model
 {
     protected $fillable = ["name", "slug"];
 
-    public function pizza(){
+    public function pizzas(){
         return $this->hasMany("App\Pizza");
     }
 }
