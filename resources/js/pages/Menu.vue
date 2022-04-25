@@ -32,7 +32,7 @@
 
 
         <div class="row justify-content-center" v-if="pizze.length">
-            <div class="col-3 m-2"  v-for="(pizza,index) in pizze" :key="index">
+            <div class="col-3 m-2 card-group"  v-for="(pizza,index) in pizze" :key="index">
                 <div class="card ms_card">
                     <img :src="pizza.path" v-if="pizza.path" class="card-img-top ms_img" :alt="pizza.name">
                     <img :src="'storage/' + pizza.image" v-if="pizza.image" class="card-img-top ms_img" :alt="pizza.name">
@@ -46,7 +46,6 @@
                             <span class="mr-2" v-for="tag in pizza.tags" :key="tag.id">
                                  <a href="#" class="badge badge-pill bg-primary text-white my-3">{{tag.name}}</a>
                             </span>
-
                         </div>
 
                         <div class="d-flex">
