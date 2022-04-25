@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PizzaController;
 use Illuminate\Http\Request;
@@ -32,3 +33,5 @@ Route::post('/contacts', 'Api\ContactController@store');
 Route::get('/orders', [OrderController::class, 'index']);
 // api per ordine singolo
 Route::get('/order/{id}', [OrderController::class, 'show']);
+// api per categorie
+Route::get('/categories', [CategoryController::class, 'index']);

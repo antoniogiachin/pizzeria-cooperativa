@@ -11,7 +11,7 @@ class PizzaController extends Controller
     //
     public function index(){
 
-        $pizzas = Pizza::with(["tags"])->get();
+        $pizzas = Pizza::with(["tags", "category"])->get();
 
         return response()->json(
             [

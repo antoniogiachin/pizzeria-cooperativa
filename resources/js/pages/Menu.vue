@@ -1,7 +1,30 @@
 <template>
     <div class="container py-5">
+        <div class="row">
+            <div class="col">
+
+                <div class="d-flex justify-content-center align-items-center my-4">
+
+                    <span class="mr-3">Categoria</span>
+
+                    <div class="form-group mb-0 mr-3">
+                        <select class="custom-select" id="categorySelected" name="categorySelected" v-model="categorySelected" @change="">
+                            <option value="">Tutte le categorie</option>
+                            <option v-for="category in categories" :key="category.id" :value="category.id" >{{category.name}}</option>
+                        </select>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Cerca</button>
+
+                </div>
+
+
+            </div>
+        </div>
         <div class="row justify-content-center">
-            <div class="col-3 m-2" v-for="(pizza,index) in pizze" :key="index">
+            <h3 v-if="getPizzaByCategory.length == 0">Nessuna pizza di questa cateogria presente</h3>
+            <div class="col-3 m-2" v-for="(pizza,index) in getPizzaByCategory" :key="index">
                 <div class="card ms_card">
                     <img :src="pizza.path" v-if="pizza.path" class="card-img-top ms_img" :alt="pizza.name">
                     <img :src="'storage/' + pizza.image" v-if="pizza.image" class="card-img-top ms_img" :alt="pizza.name">
@@ -38,6 +61,8 @@ export default {
     name: 'Menu',
     data() {
         return {
+            categories: [],
+            categorySelected: '',
             pizze: [],
             // creo array di oggetti con path immagine e slug per reference
             pizzeStandardImg : [
@@ -102,10 +127,29 @@ export default {
             });
 
             //console.log(arrayObj);
-        }
+        },
+        getCategories(){
+            axios.get('/api/categories')
+            .then(response => {
+                // console.log(response);
+                this.categories = response.data.results;
+            })
+        },
     },
     mounted () {
         this.getMenu();
+        this.getCategories();
+    },
+    computed: {
+        getPizzaByCategory() {
+            if(this.categorySelected == '' ){
+                return this.pizze
+            } else {
+                return this.pizze.filter(pizza=>{
+                    return pizza.category_id == this.categorySelected;
+                })
+            }
+        }
     },
 }
 </script>
