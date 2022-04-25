@@ -20,7 +20,7 @@ class OrderController extends Controller
             "number" => "required | min:9 | max: 13",
             "address" => "required | min: 5",
             "pizzaSelected" => "required | min: 4",
-            "message" => "required | min:8 | max:500"
+            "message" => "nullable | min:8 | max:500"
         ]);
 
 
