@@ -20,24 +20,38 @@ class PizzaController extends Controller
      */
     public function index(Request $request)
     {
+        // validazioni back end
+        $request->validate(
+            [
+                'category_id' => 'nullable | min:1',
+            ]
+        );
+
+        // prelevo tutte le categorie
         $categories = Category::all();
+
+        // query di tutte le pizze
         $pizzas = Pizza::with("category")->get();
 
+        // setto valori di default
         $data = $request->all();
         $categoryId = null;
-        if($data){
-            
+
+        // se la request ha del contenuto ed esiste il $data["category_id"]
+        if($data && isset($data["category_id"]) ){
+
+            // setto il categoryId
             $categoryId =  $data["category_id"];
 
-            // filtro per categorie
-            if($data["category_id"] == null){
-                
+            // categoryId è nullo quando si seleziona la voce di categoria "tutte le categorie",
+            // provvedo a tornare tutte le pizze altrimenti faccio la query per le sole pizze della categoria selezionata
+            if($categoryId == null){
+                $pizzas = Pizza::with("category")->get();
             }else{
                 $pizzas = Pizza::with("category")->where("category_id", $categoryId)->get(); 
             }
-
-        }
             
+        }   
         
         return view('admin.pizzas.index', compact('pizzas', 'categories', 'categoryId'));
     }
