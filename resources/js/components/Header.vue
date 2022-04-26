@@ -49,6 +49,10 @@ export default {
                 {
                     to : 'contacts',
                     name : 'Contattaci',
+                },
+                {
+                    to:'registrati',
+                    name: 'Registrati'
                 }
             ]
         }
