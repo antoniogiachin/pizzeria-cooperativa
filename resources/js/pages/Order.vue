@@ -1,9 +1,17 @@
 <template>
-    <div class="container">
+    <div class="container py-4">
 
         <div class="row">
-            <div class="col">
+            <div class="col-5">
                 <h1>Ordina da noi!</h1>
+            </div>
+            <div class="col-3 offset-4">
+                <h3>Sei già iscritto?</h3>
+                <form class="d-flex" @submit.prevent='getCustomerInfo()'>
+                    <input class="border-0 mr-2" placeholder="Inserisci la tua email" type="email" v-model="customerEmail">
+                    <button type="submit" class="btn btn-success">Invia</button>
+                </form>
+                <h4 class="text-danger" v-if="notRegistered"> Non sei registrato!</h4>
             </div>
         </div>
 
@@ -104,6 +112,9 @@
                 // prova multiselect
                 value: [],
                 try: [],
+                // customer
+                customerEmail : '',
+                notRegistered: false,
             }
         },
 
@@ -159,6 +170,20 @@
                     valueName.push(value.name);
                 })
                 this.pizzaSelcted = valueName.toString();
+            },
+            // info customer da email
+            getCustomerInfo(){
+                axios.get('/api/customers/' + this.customerEmail)
+                .then(response => {
+                    console.log(response);
+                    if(response.data.success == true){
+                        this.name = response.data.results.name;
+                        this.address = response.data.results.address;
+                        this.number = response.data.results.phone;
+                    } else {
+                        this.notRegistered = true;
+                    }
+                })
             }
         }
     }

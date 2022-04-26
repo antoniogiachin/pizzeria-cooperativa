@@ -8,7 +8,7 @@
                     <span class="mr-3">Categoria</span>
 
                     <div class="form-group mb-0 mr-3">
-                        <select class="custom-select" id="categorySelected" name="categorySelected" v-model="categorySelected" @change="">
+                        <select class="custom-select" id="categorySelected" name="categorySelected" v-model="categorySelected" >
                             <option value="">Tutte le categorie</option>
                             <option v-for="category in categories" :key="category.id" :value="category.id" >{{category.name}}</option>
                         </select>

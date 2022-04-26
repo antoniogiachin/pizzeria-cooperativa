@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PizzaController;
 use Illuminate\Http\Request;
@@ -37,3 +38,7 @@ Route::get('/orders', [OrderController::class, 'index']);
 Route::get('/order/{id}', [OrderController::class, 'show']);
 // api per categorie
 Route::get('/categories', [CategoryController::class, 'index']);
+// api per salvataggio customer
+Route::post('/customers', [CustomerController::class, 'store']);
+// api per customer a seconda di email
+Route::get('/customers/{email}', [CustomerController::class, 'show']);
